@@ -42,58 +42,62 @@ import processing.core.PImage;
  *    text("Score: " + score, 20, 20);
  */
 public class RainGame extends PApplet {
-    static final int WIDTH = 600;
-    static final int HEIGHT = 600;
+	static final int WIDTH = 600;
+	static final int HEIGHT = 600;
 
-    int score = 0;
-    int bucketWidth = 50;
-    int bucketHeight;
-    PImage bucket;
-    int y;
-    int x;
+	int score = 0;
+	int bucketWidth = 50;
+	int bucketHeight;
+	PImage bucket;
+	int y;
+	int x = 50;
 
-    // Sets the size of your canvas
-    @Override
-    public void settings() {
-        size(WIDTH, HEIGHT);
-    }
+	// Sets the size of your canvas
+	@Override
+	public void settings() {
+		size(WIDTH, HEIGHT);
+	}
 
-    @Override
-    public void setup() {
-    	bucket = loadImage("images/bucket.png");
-    	bucket.resize(100, 100);
-    	y = 50;
+	@Override
+	public void setup() {
+		bucket = loadImage("images/bucket.png");
+		bucket.resize(100, 100);
+		y = 50;
 
-    }
+	}
 
-    @Override
-    public void draw() {
-    	background(0,0, 255);
-    		y = y + 2;
-    		ellipse(50, y, 50, 50);
-    		
-    		
-    	
-    	if(y > HEIGHT){
-    		y = 50;
-    		
-    	}
-    	
-    	
-    }
+	@Override
+	public void draw() {
+		background(0, 0, 255);
+		y = y + 2;
+		ellipse(x, y, 50, 50);
 
-    static public void main(String[] args) {
-        PApplet.main(RainGame.class.getName());
-    }
-    
-    /*********************** DO NOT MODIFY THE CODE BELOW ********************/
+		if (y > HEIGHT) {
+			y = 50;
+			checkCatch(x);
+			x = (int)random(50, WIDTH-50);
+		}
 
-    void checkCatch(int x) {
-        if (x > mouseX && x < mouseX + bucketWidth) {
-            score++;
-        } else if (score > 0) {
-            score--;
-        }
-        println("Your score is now: " + score);
-    }
+		rect(mouseX, 550, bucketWidth, 50);
+
+		fill(0, 0, 0);
+		textSize(16);
+		text("Score: " + score, 20, 30);
+
+	}
+
+	static public void main(String[] args) {
+		PApplet.main(RainGame.class.getName());
+	}
+
+	/*********************** DO NOT MODIFY THE CODE BELOW ********************/
+
+	void checkCatch(int x) {
+		if (x > mouseX && x < mouseX + bucketWidth) {
+			score++;
+		} else if (score > 0) {
+			score--;
+		}
+		println("Your score is now: " + score);
+	}
 }
