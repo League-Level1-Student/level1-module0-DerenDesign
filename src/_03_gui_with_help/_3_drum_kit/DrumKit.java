@@ -14,17 +14,23 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 public class DrumKit implements MouseListener {
-	static boolean canPlaySounds = true; // Set this to false if your computer cannot play sounds
+	static boolean canPlaySounds = false; // Set this to false if your computer cannot play sounds
 	JLabel drumLabel;
 
 	public void run() {
 
 		//  Make a JFrame variable and initialize it using "new JFrame()"
-
+		JFrame frame = new JFrame();
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setTitle("DrumKit");
+		JPanel panel = new JPanel();
 		//  Make the frame visible and
 		// set its default close operation to JFrame.EXIT_ON_CLOSE
 
