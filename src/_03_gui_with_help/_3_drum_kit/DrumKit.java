@@ -4,6 +4,7 @@ package _03_gui_with_help._3_drum_kit;
  *    Level 1
  */
 
+import java.awt.GridLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
@@ -20,6 +21,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class DrumKit implements MouseListener {
+	
 	static boolean canPlaySounds = false; // Set this to false if your computer cannot play sounds
 	JLabel drumLabel;
 
@@ -31,6 +33,12 @@ public class DrumKit implements MouseListener {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("DrumKit");
 		JPanel panel = new JPanel();
+		frame.add(panel);
+		String drumImage = ("snare.jpg");
+		drumLabel = createLabelImage(drumImage);
+		panel.add(drumLabel);
+		frame.pack();
+		
 		//  Make the frame visible and
 		// set its default close operation to JFrame.EXIT_ON_CLOSE
 
@@ -67,6 +75,9 @@ public class DrumKit implements MouseListener {
 	}
 
 	public void mouseClicked(MouseEvent e) {
+		new GridLayout();
+		System.out.print("Mouse Clicked");
+		
 		// Print "mouse clicked" to the console. Run your program and watch
 		// the console to see when this is printed.
 
